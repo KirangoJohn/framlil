@@ -58,12 +58,12 @@ export default function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/farmers"
+          to="/cards"
           style={({ isActive }) =>
             isActive ? { ...linkStyle, ...activeStyle } : linkStyle
           }
         >
-          Farmers
+          Cards
         </NavLink>
 
       </nav>

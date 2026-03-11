@@ -11,7 +11,7 @@ export default function Fruits() {
     api.get("fruits/")
       .then(res => {
         console.log(res.data);   // check data
-        setFruits(res.data);
+        setFruits(res.data.results);
       })
       .catch(err => console.error(err));
 
@@ -19,9 +19,6 @@ export default function Fruits() {
 
   return (
     <DashboardLayout>
-
-      <h1>Fruits</h1>
-
       <table border="1" cellPadding="10" style={{marginTop:"20px"}}>
 
         <thead>

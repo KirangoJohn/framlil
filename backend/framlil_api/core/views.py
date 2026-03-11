@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework import generics, filters
 from rest_framework import viewsets
 from .models import Farmers, Fruits, Transaction, Prices, Cards
 from .serializers import FarmerSerializer, FruitSerializer, TransactionSerializer, PriceSerializer, CardsSerializer
@@ -25,4 +26,6 @@ class PriceViewSet(viewsets.ModelViewSet):
 
 class CardsViewSet(viewsets.ModelViewSet):
     serializer_class = CardsSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['farmer', 'vehicle_no', 'gnr']
     queryset = Cards.objects.all().order_by('-created_at')
