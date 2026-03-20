@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
+import "../styles/dashboard.css";
 import api from "../services/api";
 
 export default function Fruits() {
@@ -7,39 +8,45 @@ export default function Fruits() {
   const [fruits, setFruits] = useState([]);
 
   useEffect(() => {
+    fetchFruits();
+  }, []);
 
+  const fetchFruits = () => {
     api.get("fruits/")
       .then(res => {
-        console.log(res.data);   // check data
         setFruits(res.data.results);
       })
-      .catch(err => console.error(err));
-
-  }, []);
+      .catch(console.error);
+  };
 
   return (
     <DashboardLayout>
-      <table border="1" cellPadding="10" style={{marginTop:"20px"}}>
 
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
-        </thead>
+      <div className="page-container">
 
-        <tbody>
+      
 
-          {fruits.map(fruit => (
-            <tr key={fruit.id}>
-              <td>{fruit.id}</td>
-              <td>{fruit.name}</td>
+        <table className="table">
+
+          <thead>
+            <tr>
+              <th>Name</th>
             </tr>
-          ))}
+          </thead>
 
-        </tbody>
+          <tbody>
 
-      </table>
+            {fruits.map(fruit => (
+              <tr key={fruit.id}>
+                <td>{fruit.name}</td>
+              </tr>
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
 
     </DashboardLayout>
   );

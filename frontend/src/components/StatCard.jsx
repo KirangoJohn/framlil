@@ -1,12 +1,8 @@
-import React from "react";
-
-export default function StatCard({title,value}) {
+export default function StatCard({ title, value }) {
   return (
-    <div className="card shadow-sm">
-      <div className="card-body">
-        <h6 className="card-title">{title}</h6>
-        <h3>{value}</h3>
-      </div>
+    <div className="bg-white shadow rounded-lg p-6">
+      <h3 className="text-gray-500 text-sm font-medium">{title}</h3>
+      <p className="text-2xl font-bold mt-2">{value}</p>
     </div>
-  )
+  );
 }

@@ -14,20 +14,19 @@ from django.core.validators import MinValueValidator
 class Cards(models.Model):
     id = models.BigAutoField(primary_key=True)
     farmer = models.CharField(max_length=191)
-    national_id = models.IntegerField(blank=True, null=True)
+    company_name = models.CharField(
+        max_length=191,
+        blank=True,
+        null=True
+    )
+    national_id = models.CharField(max_length=20, null=True, blank=True)
     vehicle_no = models.CharField(max_length=191)
     gnr = models.CharField(max_length=191)
-    phone = models.IntegerField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
     crates = models.IntegerField(blank=True, null=True)
     created_on = models.DateField(auto_now_add=True)
-    user = models.ForeignKey(
-    'users_app.User', 
-    on_delete=models.CASCADE, 
-    null=True, 
-    blank=True
-    )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         managed = False

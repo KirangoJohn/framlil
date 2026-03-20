@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
-
   const location = useLocation();
 
   const titles = {
@@ -9,24 +8,15 @@ export default function Navbar() {
     "/fruits": "Fruits",
     "/prices": "Prices",
     "/farmers": "Farmers",
-     "/cards": "Cards",
+    "/cards": "Cards",
+    "/sizes": "Sizes"
   };
 
   const title = titles[location.pathname] || "Dashboard";
 
   return (
-    <div
-      style={{
-        width: "100%",
-        background: "#f1f5f9",
-        padding: "12px 20px",
-        borderBottom: "1px solid #ddd",
-        boxSizing: "border-box",
-        fontWeight: "bold",
-        fontSize: "18px"
-      }}
-    >
+    <header className="w-full bg-white border-b border-gray-300 p-4 font-semibold text-lg">
       {title}
-    </div>
+    </header>
   );
 }

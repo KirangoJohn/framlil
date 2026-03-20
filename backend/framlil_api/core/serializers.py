@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Farmers, Fruits, Prices, Rejects, Cards
-from .models import Transaction
+from .models import Transaction, Sizes
 
 class FarmerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,17 +14,20 @@ class CardsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def validate(self, data):
-        national_id = data.get("national_id")
-        phone = data.get("phone")
+        gnr = data.get("gnr")
 
-        if national_id and Cards.objects.filter(national_id=national_id).exists():
-            raise serializers.ValidationError("Client with this National ID already exists.")
+        if gnr:
+            qs = Cards.objects.filter(gnr=gnr)
 
-        if phone and Cards.objects.filter(phone=phone).exists():
-            raise serializers.ValidationError("Client with this phone number already exists.")
+        if self.instance:
+            qs = qs.exclude(id=self.instance.id)
+
+        if qs.exists():
+            raise serializers.ValidationError(
+                "Client with this GNR ID already exists."
+            )
 
         return data
-    
     
 class FruitSerializer(serializers.ModelSerializer):
     class Meta:
@@ -68,4 +71,9 @@ class PriceSerializer(serializers.ModelSerializer):
 class RejectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rejects
+        fields = '__all__'
+        
+class SizesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sizes
         fields = '__all__'

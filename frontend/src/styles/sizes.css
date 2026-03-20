@@ -1,0 +1,47 @@
+.form-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-save {
+  background: green;
+  color: white;
+  padding: 8px 12px;
+}
+
+.btn-cancel {
+  background: gray;
+  color: white;
+  padding: 8px 12px;
+}
+
+.btn-edit {
+  background: orange;
+  margin-right: 5px;
+  padding: 5px 10px;
+}
+
+.btn-delete {
+  background: red;
+  color: white;
+  padding: 5px 10px;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  color: white;
+  padding: 8px 12px;
+}

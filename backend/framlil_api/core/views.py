@@ -29,3 +29,7 @@ class CardsViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['farmer', 'vehicle_no', 'gnr']
     queryset = Cards.objects.all().order_by('-created_at')
+    
+class SizesViewSet(viewsets.ModelViewSet):
+    queryset = Sizes.objects.all()
+    serializer_class = SizesSerializer

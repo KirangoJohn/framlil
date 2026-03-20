@@ -1,15 +1,7 @@
 export default function Footer() {
   return (
-    <div
-      style={{
-        textAlign: "center",
-        padding: "15px",
-        borderTop: "1px solid #ddd",
-        marginTop: "auto",
-        background: "#f8fafc"
-      }}
-    >
-      © {new Date().getFullYear()} Developed and Powered by Zinofit Technologies
-    </div>
+    <footer className="w-full bg-white border-t border-gray-300 p-4 text-center text-sm text-gray-500">
+      © 2026 Developed and Powered by Zinofit Technologies
+    </footer>
   );
 }
